@@ -1,0 +1,472 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+  font-family: 'Nunito', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0f172a;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+/* ===== SCROLL BEHAVIOR ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== BLOB ANIMATION (existing) ===== */
+@layer utilities {
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* ===== ADVANCED LOADER ANIMATIONS ===== */
+
+/* Orbit spinning for rings */
+@keyframes orbitSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Morphing blob shape + float */
+@keyframes morphBlob {
+  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  25% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+  50% { border-radius: 50% 60% 30% 60% / 50% 40% 70% 50%; }
+  75% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(2rem, -1.5rem) scale(1.1); }
+  66% { transform: translate(-1rem, 1rem) scale(0.95); }
+}
+
+/* Logo entrance: scale + blur to clear */
+.logo-entrance {
+  animation: logoEnter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes logoEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-10deg);
+    filter: blur(12px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1) rotate(2deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+/* Logo breathing glow */
+.loader-logo-breathe {
+  animation: logoBreathe 3s ease-in-out infinite;
+}
+
+@keyframes logoBreathe {
+  0%, 100% {
+    filter: drop-shadow(0 0 1rem rgba(59, 130, 246, 0.3));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 2.5rem rgba(59, 130, 246, 0.5)) drop-shadow(0 0 4rem rgba(34, 197, 94, 0.2));
+    transform: scale(1.04);
+  }
+}
+
+/* Glow ring behind logo */
+.loader-glow-ring {
+  background: conic-gradient(from 0deg, transparent, rgba(59,130,246,0.15), transparent, rgba(34,197,94,0.1), transparent);
+  animation: glowRingSpin 4s linear infinite;
+  filter: blur(1rem);
+}
+
+@keyframes glowRingSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Border ring spin */
+.loader-ring-spin {
+  animation: orbitSpin 6s linear infinite;
+}
+
+/* Scan line sweeping over logo */
+.loader-scan-line {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  animation: scanSweep 2.5s ease-in-out infinite;
+}
+
+@keyframes scanSweep {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}
+
+/* Letter wave animation */
+.loader-letter-wave {
+  opacity: 0;
+  animation: letterWave 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes letterWave {
+  0% {
+    opacity: 0;
+    transform: translateY(1.5rem) rotateX(90deg) scale(0.5);
+    filter: blur(6px);
+  }
+  60% {
+    transform: translateY(-0.25rem) rotateX(0deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Tagline slide-in */
+.loader-tagline-slide {
+  animation: taglineSlide 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  opacity: 0;
+}
+
+@keyframes taglineSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    letter-spacing: 0.5em;
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.25em;
+    filter: blur(0);
+  }
+}
+
+/* Progress section entrance */
+.loader-progress-entrance {
+  animation: progressReveal 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes progressReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Exit animation — split and fade */
+.loader-exit {
+  animation: loaderExit 0.8s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+@keyframes loaderExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+    filter: blur(12px);
+  }
+}
+
+
+/* ===== HERO TEXT ANIMATIONS ===== */
+.hero-title-animate {
+  opacity: 0;
+  animation: heroTitleIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.hero-subtitle-animate {
+  opacity: 0;
+  animation: heroSubtitleIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards;
+}
+
+.hero-cta-animate {
+  opacity: 0;
+  animation: heroCtaIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.25s forwards;
+}
+
+@keyframes heroTitleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroSubtitleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroCtaIn {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== FLOATING ANIMATION ===== */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out 1.5s infinite;
+}
+
+/* ===== BUTTON HOVER SHINE ===== */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.btn-shine:hover::after {
+  left: 130%;
+}
+
+/* ===== CARD HOVER LIFT ===== */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-hover:hover {
+  transform: translateY(-0.375rem);
+  box-shadow: 0 1.25rem 3rem -0.5rem rgba(0, 0, 0, 0.1),
+              0 0.5rem 1rem -0.25rem rgba(0, 0, 0, 0.05);
+}
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== SECTION DIVIDER WAVE ===== */
+.wave-divider {
+  position: relative;
+}
+
+.wave-divider::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C57.1,118.92,179.23,71.86,321.39,56.44Z' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+/* ===== COUNTER ANIMATION ===== */
+.counter-animate {
+  animation: counterPop 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes counterPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== STAGGER CHILDREN (utility) ===== */
+.stagger-children > * {
+  opacity: 0;
+  animation: staggerIn 0.6s ease forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes staggerIn {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== SMOOTH LINK UNDERLINE ===== */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #3b82f6;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ===== GLOW RING ===== */
+.glow-ring {
+  position: relative;
+}
+
+.glow-ring::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #3b82f6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.glow-ring:hover::before {
+  opacity: 0.5;
+}
+
+/* ===== IMAGE REVEAL ===== */
+.img-reveal {
+  overflow: hidden;
+}
+
+.img-reveal img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.img-reveal:hover img {
+  transform: scale(1.05);
+}
+
+/* ===== DURATION UTILITY ===== */
+.duration-600 {
+  transition-duration: 600ms;
+}
