@@ -75,52 +75,17 @@
       }
       .logo { width: 42px; height: 42px; object-fit: contain; }
 
-      /* CSS 404 animation */
-      .anim-wrap {
-        position: relative;
-        width: 220px;
-        height: 220px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      /* 404 illustration */
+      .illus-wrap {
+        width: min(340px, 88vw);
         margin-bottom: 0.5rem;
+        filter: drop-shadow(0 10px 28px rgba(58,159,224,0.15));
+        animation: float 4s ease-in-out infinite;
       }
-      .ring {
-        position: absolute;
-        border-radius: 50%;
-        border: 2px solid;
-        animation: ring-pulse 2.5s ease-in-out infinite;
-      }
-      .ring-1 { width: 160px; height: 160px; border-color: rgba(58,159,224,0.3); animation-delay: 0s; }
-      .ring-2 { width: 210px; height: 210px; border-color: rgba(85,194,85,0.22); animation-delay: 0.7s; }
-      @keyframes ring-pulse {
-        0%, 100% { transform: scale(0.95); opacity: 0.35; }
-        50%       { transform: scale(1.05); opacity: 0.85; }
-      }
-      .anim-icon {
-        width: 120px; height: 120px;
-        animation: float 3.2s ease-in-out infinite;
-        filter: drop-shadow(0 10px 22px rgba(58,159,224,0.32));
-        z-index: 1;
-      }
-      .anim-icon svg { width: 100%; height: 100%; }
+      .illus-wrap img { width: 100%; height: auto; display: block; }
       @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50%       { transform: translateY(-13px); }
-      }
-      .particle {
-        position: absolute;
-        border-radius: 50%;
-        animation: drift 4s ease-in-out infinite;
-      }
-      .p1 { width: 11px; height: 11px; background: #3A9FE0; opacity: 0.7; top: 16%; right: 18%; animation-duration: 3.4s; }
-      .p2 { width: 7px;  height: 7px;  background: #55C255; opacity: 0.65; bottom: 20%; left: 20%; animation-duration: 4.1s; animation-delay: -1.2s; }
-      .p3 { width: 5px;  height: 5px;  background: #3A9FE0; opacity: 0.5; top: 58%; right: 15%; animation-duration: 2.9s; animation-delay: -2.1s; }
-      @keyframes drift {
-        0%, 100% { transform: translate(0, 0); }
-        25%       { transform: translate(7px, -7px); }
-        50%       { transform: translate(0, -13px); }
-        75%       { transform: translate(-7px, -7px); }
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(-12px); }
       }
 
       /* "404" badge */
@@ -195,7 +160,7 @@
       }
       .card > * { animation: float-in 0.5s ease both; }
       .logo-wrap    { animation-delay: 0ms; }
-      .anim-wrap    { animation-delay: 80ms; }
+      .illus-wrap  { animation-delay: 80ms; }
       .error-badge  { animation-delay: 160ms; }
       .title        { animation-delay: 220ms; }
       .subtitle     { animation-delay: 280ms; }
@@ -232,36 +197,9 @@
         <img src="/LOGO.webp" alt="AllRounder" class="logo" />
       </div>
 
-      <!-- CSS 404 animation (no external deps) -->
-      <div class="anim-wrap">
-        <div class="ring ring-1"></div>
-        <div class="ring ring-2"></div>
-        <div class="anim-icon">
-          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="dg" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#3A9FE0"/>
-                <stop offset="100%" stop-color="#55C255"/>
-              </linearGradient>
-            </defs>
-            <!-- Document body -->
-            <rect x="14" y="8" width="52" height="64" rx="7" fill="url(#dg)" opacity="0.92"/>
-            <!-- Folded corner -->
-            <path d="M52 8 L66 22 L52 22 Z" fill="white" opacity="0.18"/>
-            <!-- Lines -->
-            <rect x="22" y="32" width="36" height="4" rx="2" fill="white" opacity="0.65"/>
-            <rect x="22" y="42" width="28" height="4" rx="2" fill="white" opacity="0.5"/>
-            <rect x="22" y="52" width="20" height="4" rx="2" fill="white" opacity="0.35"/>
-            <!-- Broken search circle -->
-            <circle cx="54" cy="20" r="9" stroke="white" stroke-width="2.5" fill="none" opacity="0.85"/>
-            <!-- X inside circle -->
-            <line x1="49.5" y1="15.5" x2="58.5" y2="24.5" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity="0.9"/>
-            <line x1="58.5" y1="15.5" x2="49.5" y2="24.5" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity="0.9"/>
-          </svg>
-        </div>
-        <div class="particle p1"></div>
-        <div class="particle p2"></div>
-        <div class="particle p3"></div>
+      <!-- 404 illustration -->
+      <div class="illus-wrap">
+        <img src="/404.svg" alt="404 illustration" />
       </div>
 
       <!-- Badge -->
