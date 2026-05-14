@@ -5,6 +5,21 @@
     <link rel="icon" type="image/png" href="/LOGO.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AllRounder</title>
+    <script>
+      // Restore path redirected by 404.html for GitHub Pages SPA routing
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        if (p) {
+          params.delete('p');
+          var remaining = params.toString();
+          window.history.replaceState(
+            null, null,
+            p + (remaining ? '?' + remaining : '') + window.location.hash
+          );
+        }
+      })();
+    </script>
     <script type="module" crossorigin src="/assets/index-Dler9PoV.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-Ca-U4HaI.css">
   </head>
