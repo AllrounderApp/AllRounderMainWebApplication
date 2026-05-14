@@ -2,17 +2,177 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — AllRounder</title>
+    <link rel="icon" type="image/png" href="/LOGO.png" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 50%, #e8edff 100%);
+        color: #1e293b;
+        overflow: hidden;
+        position: relative;
+        padding: 2rem;
+      }
+
+      /* decorative blobs */
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.45;
+        pointer-events: none;
+      }
+      .blob-1 {
+        width: 500px; height: 500px;
+        background: #c7d7ff;
+        top: -120px; right: -100px;
+      }
+      .blob-2 {
+        width: 350px; height: 350px;
+        background: #ddd8ff;
+        bottom: -80px; left: -80px;
+      }
+      .blob-3 {
+        width: 200px; height: 200px;
+        background: #bfceff;
+        top: 55%; left: 60%;
+      }
+
+      .card {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 560px;
+        width: 100%;
+      }
+
+      .logo {
+        width: 56px; height: 56px;
+        object-fit: contain;
+        margin-bottom: 2.5rem;
+        filter: drop-shadow(0 4px 12px rgba(43,96,230,0.18));
+      }
+
+      .error-code {
+        font-size: clamp(6rem, 20vw, 9rem);
+        font-weight: 800;
+        line-height: 1;
+        background: linear-gradient(135deg, #2B60E6 0%, #7c9fff 60%, #a78bfa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.04em;
+        margin-bottom: 0.5rem;
+        user-select: none;
+      }
+
+      .title {
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 0.875rem;
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle {
+        font-size: 1.0625rem;
+        color: #64748b;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        max-width: 400px;
+      }
+
+      .btn-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        background: #2B60E6;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 0.875rem 2rem;
+        border-radius: 9999px;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+        box-shadow: 0 4px 20px rgba(43,96,230,0.3);
+        border: none;
+        cursor: pointer;
+      }
+      .btn-home:hover {
+        background: #1d4fd8;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 28px rgba(43,96,230,0.38);
+      }
+      .btn-home:active { transform: scale(0.97); }
+
+      .btn-home svg {
+        width: 1.125rem; height: 1.125rem;
+        flex-shrink: 0;
+      }
+
+      .divider {
+        width: 48px; height: 3px;
+        border-radius: 9999px;
+        background: linear-gradient(90deg, #2B60E6, #a78bfa);
+        margin: 1.5rem auto 2rem;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(-10px); }
+      }
+      .error-code { animation: float 4s ease-in-out infinite; }
+    </style>
     <script>
-      // SPA redirect for GitHub Pages
-      // Encodes the full path into a query param so index.html can restore it
-      var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1).join('/') +
-        '/?p=' + encodeURIComponent(l.pathname + l.search) +
-        (l.hash || '')
-      );
+      // SPA redirect for GitHub Pages — only for known app routes
+      (function () {
+        var knownRoutes = ['/', '/about-us', '/contact', '/terms-conditions', '/privacy-policy'];
+        var path = window.location.pathname;
+        // Normalise trailing slash
+        var normalised = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+        if (knownRoutes.indexOf(normalised) !== -1 || normalised === '') {
+          var l = window.location;
+          l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            '/?p=' + encodeURIComponent(l.pathname + l.search) + (l.hash || '')
+          );
+        }
+        // Otherwise fall through and show the 404 page
+      })();
     </script>
   </head>
-  <body></body>
+  <body>
+    <!-- Background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="card">
+      <img src="/LOGO.png" alt="AllRounder" class="logo" />
+      <div class="error-code">404</div>
+      <div class="divider"></div>
+      <h1 class="title">Page Not Found</h1>
+      <p class="subtitle">
+        Looks like this page took a day off. The link might be broken,
+        or the page may have moved.
+      </p>
+      <a href="/" class="btn-home">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7A1 1 0 003 11h1v6a1 1 0 001 1h4v-4h2v4h4a1 1 0 001-1v-6h1a1 1 0 00.707-1.707l-7-7z"/>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </body>
 </html>
