@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.allrounder.app",
+      "sha256_cert_fingerprints": [
+        "35:4B:E0:CB:11:AE:4D:2C:BB:B6:C9:E7:95:93:BB:1B:E3:84:0A:C3:47:A1:F9:2C:CE:0C:37:D7:66:C1:07:A2"
+      ]
+    }
+  }
+]
