@@ -1,5 +1,5 @@
 import React from 'react';
-import questionImg from '../../assets/aboutUs/QuestionImage.png';
+import questionImg from '../../assets/aboutUs/QuestionImage.webp';
 import ScrollReveal from '../common/ScrollReveal';
 
 const HelpQuestion: React.FC = () => {

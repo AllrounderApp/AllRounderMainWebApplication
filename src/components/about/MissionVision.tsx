@@ -1,5 +1,5 @@
 import React from 'react';
-import visionImg from '../../assets/aboutUs/VisonImage.png';
+import visionImg from '../../assets/aboutUs/VisonImage.webp';
 import ScrollReveal from '../common/ScrollReveal';
 
 const MissionVision: React.FC = () => {

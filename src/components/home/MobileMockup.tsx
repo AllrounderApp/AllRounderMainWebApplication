@@ -1,6 +1,6 @@
 import React from 'react';
 import Badge from '../common/Badge';
-import mobileHero from '../../assets/home/MobileHero.png';
+import mobileHero from '../../assets/home/MobileHero.webp';
 
 const MobileMockup: React.FC = () => {
   return (

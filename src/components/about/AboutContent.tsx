@@ -1,6 +1,6 @@
 import React from 'react';
-import officeImg from '../../assets/aboutUs/OfficeImage.png';
-import ceoImg from '../../assets/aboutUs/CEOImage.jpg';
+import officeImg from '../../assets/aboutUs/OfficeImage.webp';
+import ceoImg from '../../assets/aboutUs/CEOImage.webp';
 import ScrollReveal from '../common/ScrollReveal';
 
 const AboutContent: React.FC = () => {

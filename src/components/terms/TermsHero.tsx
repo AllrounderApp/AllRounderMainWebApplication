@@ -1,5 +1,5 @@
 import React from 'react';
-import termsHeroImg from '../../assets/TermsAndCond/TermsAndCondition.png';
+import termsHeroImg from '../../assets/TermsAndCond/TermsAndCondition.webp';
 
 const TermsHero: React.FC = () => {
   return (

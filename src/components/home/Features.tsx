@@ -1,5 +1,5 @@
 import React from 'react';
-import featuresMobile from '../../assets/home/FeaturesMobile.png';
+import featuresMobile from '../../assets/home/FeaturesMobile.webp';
 import ScrollReveal from '../common/ScrollReveal';
 
 const featuresList = [

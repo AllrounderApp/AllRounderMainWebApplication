@@ -1,5 +1,5 @@
 import React from 'react';
-import privacyHeroImg from '../../assets/PrivacyPolicy/PrivacyPolicy.png';
+import privacyHeroImg from '../../assets/PrivacyPolicy/PrivacyPolicy.webp';
 
 const PrivacyHero: React.FC = () => {
   return (

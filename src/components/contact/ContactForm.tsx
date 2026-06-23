@@ -43,10 +43,9 @@ const ContactForm: React.FC = () => {
 
               <ScrollReveal direction="up" delay={150}>
                 <div>
-                  <h4 className="text-[1rem] font-bold text-slate-800 mb-[0.75rem]">Phone Number :</h4>
+                  <h4 className="text-[1rem] font-bold text-slate-800 mb-[0.75rem]">WhatsApp Number :</h4>
                   <p className="text-[0.875rem] text-slate-600 leading-relaxed">
-                    +91 **********<br />
-                    +91 **********
+                    <a href="https://wa.me/919330093620" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">+91 9330093620</a>
                   </p>
                 </div>
               </ScrollReveal>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — AllRounder</title>
+    <link rel="icon" type="image/png" href="/LOGO.png" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #edf7ff 0%, #f4fff4 50%, #edfff0 100%);
+        color: #1e293b;
+        overflow-x: hidden;
+        position: relative;
+        padding: clamp(1rem, 5vw, 2.5rem) clamp(1rem, 5vw, 2rem);
+      }
+
+      /* decorative blobs */
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .blob-1 {
+        width: clamp(200px, 50vw, 520px);
+        height: clamp(200px, 50vw, 520px);
+        background: #3A9FE0;
+        top: -80px; right: -80px;
+      }
+      .blob-2 {
+        width: clamp(150px, 40vw, 380px);
+        height: clamp(150px, 40vw, 380px);
+        background: #55C255;
+        bottom: -60px; left: -60px;
+      }
+      .blob-3 { display: none; }
+      .blob-4 { display: none; }
+
+      .card {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 560px;
+      }
+
+      /* logo */
+      .logo-wrap {
+        width: clamp(48px, 10vw, 64px);
+        height: clamp(48px, 10vw, 64px);
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 4px 20px rgba(58,159,224,0.18), 0 2px 8px rgba(85,194,85,0.12);
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: clamp(1rem, 3vw, 2rem);
+        flex-shrink: 0;
+      }
+      .logo {
+        width: clamp(30px, 7vw, 42px);
+        height: clamp(30px, 7vw, 42px);
+        object-fit: contain;
+      }
+
+      /* 404 illustration */
+      .illus-wrap {
+        width: min(300px, 82vw);
+        margin-bottom: 0.5rem;
+        filter: drop-shadow(0 8px 20px rgba(58,159,224,0.14));
+        animation: float 4s ease-in-out infinite;
+        flex-shrink: 0;
+      }
+      .illus-wrap img { width: 100%; height: auto; display: block; }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(-10px); }
+      }
+
+      /* "404" badge */
+      .error-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, rgba(58,159,224,0.1) 0%, rgba(85,194,85,0.1) 100%);
+        border: 1.5px solid rgba(58,159,224,0.25);
+        border-radius: 9999px;
+        padding: 0.35rem 0.9rem;
+        font-size: clamp(0.7rem, 2.5vw, 0.8125rem);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: #3A9FE0;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+      .badge-dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: #55C255;
+        flex-shrink: 0;
+      }
+
+      .title {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+        font-weight: 800;
+        background: linear-gradient(135deg, #3A9FE0 0%, #55C255 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.75rem;
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        font-size: clamp(0.875rem, 2.5vw, 1rem);
+        color: #64748b;
+        line-height: 1.65;
+        margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+        max-width: min(360px, 90vw);
+        padding: 0 0.5rem;
+      }
+
+      .btn-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, #3A9FE0 0%, #55C255 100%);
+        color: #fff;
+        font-size: clamp(0.875rem, 2.5vw, 0.9375rem);
+        font-weight: 600;
+        padding: clamp(0.7rem, 2vw, 0.875rem) clamp(1.25rem, 4vw, 2rem);
+        border-radius: 9999px;
+        text-decoration: none;
+        transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+        box-shadow: 0 4px 20px rgba(58,159,224,0.35);
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+      }
+      .btn-home:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(58,159,224,0.4);
+      }
+      .btn-home:active { transform: scale(0.97); }
+      .btn-home svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+
+      @keyframes float-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .card > * { animation: float-in 0.5s ease both; }
+      .logo-wrap   { animation-delay: 0ms; }
+      .illus-wrap  { animation-delay: 80ms; }
+      .error-badge { animation-delay: 160ms; }
+      .title       { animation-delay: 220ms; }
+      .subtitle    { animation-delay: 280ms; }
+      .btn-home    { animation-delay: 340ms; }
+
+      /* small phones */
+      @media (max-height: 600px) {
+        .logo-wrap  { width: 40px; height: 40px; margin-bottom: 0.75rem; }
+        .logo       { width: 26px; height: 26px; }
+        .illus-wrap { width: min(200px, 70vw); }
+        .subtitle   { display: none; }
+      }
+    </style>
+    <script>
+      // SPA redirect for GitHub Pages — only for known app routes
+      (function () {
+        var knownRoutes = ['/', '/about-us', '/contact', '/terms-conditions', '/privacy-policy'];
+        var path = window.location.pathname;
+        // Normalise trailing slash
+        var normalised = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+        if (knownRoutes.indexOf(normalised) !== -1 || normalised === '') {
+          var l = window.location;
+          l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            '/?p=' + encodeURIComponent(l.pathname + l.search) + (l.hash || '')
+          );
+        }
+        // Otherwise fall through and show the 404 page
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+
+    <div class="card">
+      <!-- Logo -->
+      <div class="logo-wrap">
+        <img src="/LOGO.webp" alt="AllRounder" class="logo" />
+      </div>
+
+      <!-- 404 illustration -->
+      <div class="illus-wrap">
+        <img src="/404.svg" alt="404 illustration" />
+      </div>
+
+      <!-- Badge -->
+      <div class="error-badge">
+        <span class="badge-dot"></span>
+        Error 404
+      </div>
+
+      <h1 class="title">Page Not Found</h1>
+      <p class="subtitle">
+        Looks like this page took a day off. The link might be broken,
+        or the page may have moved somewhere new.
+      </p>
+
+      <a href="/" class="btn-home">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7A1 1 0 003 11h1v6a1 1 0 001 1h4v-4h2v4h4a1 1 0 001-1v-6h1a1 1 0 00.707-1.707l-7-7z"/>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </body>
+</html>
